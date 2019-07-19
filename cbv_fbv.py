@@ -55,4 +55,6 @@ class UserList(View):
 
     def post(self, request):
         data = json.loads(request.body.decode('utf-8'))
+
         return JsonResponse(data)
+#  url配置 path('users/', views.UserList.as_view())
