@@ -47,3 +47,6 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     """ 这个视图集会自动提供`list`和 `detail`操作 """
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+# 前端调用api时要求返回json格式的，那么response就会调用json的render来把data渲染成json的格式,返回给前端
