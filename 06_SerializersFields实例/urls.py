@@ -1,10 +1,11 @@
-from django.urls import path
-from app1 import views
+from . import views
 
-urlpatterns = [
-    path('posts/', views.PostList.as_view(), name='post-list'),
-    path('posts/<int:pk>/', views.DetailPost.as_view(), name='post-detail'),
-    path('posts/<int:pk>/<str:title>/', views.RetrievePostView().as_view()),
-    path('upload/<str:filename>', views.FileUploadView().as_view()),
+from rest_framework.routers import DefaultRouter
 
-]
+router = DefaultRouter()
+router.register(r"users", views.UserViewSet, basename='user')
+router.register(r"topics", views.TopicViewSet, basename='topics')
+router.register(r"post", views.PostViewSet, basename='posts')
+
+urlpatterns = router.urls
+
